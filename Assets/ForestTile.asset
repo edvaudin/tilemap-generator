@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TopTile
+  m_Name: ForestTile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: c70668ccea96b6a4bb21ecc52a22a947, type: 3}
-  m_Color: {r: 1, g: 0.7547828, b: 0.4198113, a: 1}
+  m_Color: {r: 0.11027056, g: 0.3962264, b: 0.16989452, a: 1}
   m_Transform:
     e00: 1
     e01: 0

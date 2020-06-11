@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 public class TileAutomator : MonoBehaviour
 {
     [Range(0, 100)] public int initialChance;
+    [Range(0, 100)] public int forestChance;
 
     [Range(1, 8)] public int birthLimit;
     [Range(1, 8)] public int deathLimit;
@@ -16,10 +17,12 @@ public class TileAutomator : MonoBehaviour
 
     public Vector3Int tileMapSize;
 
-    public Tilemap topMap;
-    public Tilemap botMap;
-    public Tile topTile;
-    public Tile botTile;
+    public Tilemap landMap;
+    public Tilemap seaMap;
+    public Tilemap forestMap;
+    public Tile landTile;
+    public Tile seaTile;
+    public Tile forestTile;
 
     int width;
     int height;
@@ -44,10 +47,17 @@ public class TileAutomator : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if (terrainMap[x, y] == 1)
+                if (terrainMap[x, y] == 0)
                 {
-                    topMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), topTile);
-                    botMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), botTile);
+                    seaMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), seaTile);
+                }
+                else if (terrainMap[x, y] == 1)
+                {
+                    landMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), landTile);
+                }
+                else if (terrainMap[x, y] == 2)
+                {
+                    forestMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), forestTile);
                 }
             }
         }
@@ -83,7 +93,7 @@ public class TileAutomator : MonoBehaviour
                     }
                     else
                     {
-                        //neighbours++;
+
                     }
                 }
                 if (oldMap[x, y] == 1)
@@ -98,7 +108,7 @@ public class TileAutomator : MonoBehaviour
                     //}
                     else
                     {
-                        newMap[x, y] = 1;
+                        newMap[x, y] = Random.Range(1, 101) < forestChance ? 2 : 1;
                     }
                 }
                 if (oldMap[x, y] == 0)
@@ -133,8 +143,8 @@ public class TileAutomator : MonoBehaviour
 
     public void ClearMap(bool complete)
     {
-        topMap.ClearAllTiles();
-        botMap.ClearAllTiles();
+        landMap.ClearAllTiles();
+        seaMap.ClearAllTiles();
 
         if (complete)
         {
