@@ -93,7 +93,7 @@ public class TileAutomator : MonoBehaviour
                     }
                     else
                     {
-
+                        //assume no neighbours here.
                     }
                 }
                 if (oldMap[x, y] == 1)
