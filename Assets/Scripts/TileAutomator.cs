@@ -108,7 +108,8 @@ public class TileAutomator : MonoBehaviour
                     //}
                     else
                     {
-                        newMap[x, y] = Random.Range(1, 101) < forestChance ? 2 : 1;
+                        //newMap[x, y] = Random.Range(1, 101) < forestChance ? 2 : 1;
+                        newMap[x, y] = 1;
                     }
                 }
                 if (oldMap[x, y] == 0)
